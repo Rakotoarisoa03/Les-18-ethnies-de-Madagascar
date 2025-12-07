@@ -69,10 +69,10 @@ function show(n){
     $titre.fadeOut(200,()=>$titre.text(titres[n]).fadeIn(500));
     $texte.fadeOut(200,()=>$texte.text(textes[n]).fadeIn(500));
 
-    $("#page").stop().animate({left:dir*100+"%",opacity:0},700,()=>{
+    $("#page").stop().animate({left:dir*100+"%",opacity:0},300,()=>{
         $img.attr("src",photos[n]);
         $hdr.text(`${n+1} / ${len}`);
-        $("#page").css({left:-dir*100+"%"}).animate({left:"0%",opacity:1},800);
+        $("#page").css({left:-dir*100+"%"}).animate({left:"0%",opacity:1},500);
     });
 }
 
