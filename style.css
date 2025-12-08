@@ -79,12 +79,12 @@ body {
         gap: 20px;
     }
     
-    #page {
+    #page, #next-page {
         width: 14em !important;
         height: 24em !important;
     }
     
-    #page img {
+    #page img, #next-page img {
         max-height: 20em !important;
     }
 }
@@ -132,6 +132,12 @@ body {
     z-index: 10;
     position: relative;
     padding: 0 10px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+#precedent:hover, #suivant:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 #precedent {
@@ -151,33 +157,80 @@ body {
     position: relative;
     order: 2;
     height: 100%;
+    min-height: 400px;
 }
 
-#page {
+.slide {
     width: 18.5em;
     height: 35em;
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    left: 0;
-    transition: all 0.3s ease;
+    transition: none; 
+    pointer-events: none;
 }
 
-#page img {
+.slide img {
     width: 100%;
     max-height: 32em;
     border-radius: 4px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     object-fit: cover;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
+    pointer-events: none;
 }
 
-#page h1 {
+.slide h1 {
     margin: 10px 0 0 0;
     text-align: center;
     font-size: 1.2em;
+    pointer-events: none;
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 footer {
